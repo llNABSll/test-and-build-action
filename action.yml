@@ -13,6 +13,9 @@ inputs:
   API_NAME:
     description: "Name of the API"
     required: true
+  REPORT_PATH:
+    description: "Path to the test report"
+    required: true
 
 runs: 
 
@@ -29,6 +32,7 @@ runs:
       shell: bash
       run: |
         pip install -r requirements.txt
+        pip install coverage
 
     - name: Run unit tests
       shell: bash
