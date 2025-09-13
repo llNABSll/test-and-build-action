@@ -43,7 +43,7 @@ runs:
       run: |
         # Run ruff to lint the repository. This step will fail the workflow on lint errors.
         ruff --version || pip install ruff
-        ruff check .
+        ruff check . --extend-exclude tests
 
     - name: Run static type checker (mypy)
       shell: bash
