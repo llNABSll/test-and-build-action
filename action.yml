@@ -7,7 +7,7 @@ inputs:
   REPOSITORY_OWNER:
     description: "Owner of the repository"
     required: true
-  UNIT_TEST_COMMAND:
+  UNIT_TESTS_COMMAND:
     description: "Command to run unit tests"
     required: true
   API_NAME:
@@ -55,7 +55,7 @@ runs:
 
     - name: Run unit tests
       shell: bash
-      run: ${{ inputs.UNIT_TEST_COMMAND }}
+      run: ${{ inputs.UNIT_TESTS_COMMAND }}
 
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
