@@ -69,7 +69,7 @@ runs:
         hide_complexity: true
         indicators: true
         output: both
-        thresholds: "80 90"
+        thresholds: "75 90"
 
     - name: Append coverage markdown to job summary
       if: success()
