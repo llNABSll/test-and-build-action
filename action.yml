@@ -55,7 +55,7 @@ runs:
 
     - name: Run unit tests
       shell: bash
-      run: ${{ inputs.UNIT_TESTS_COMMAND }}
+      run: ${{ inputs.UNIT_TEST_COMMAND }}
 
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
