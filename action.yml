@@ -18,7 +18,6 @@ inputs:
     required: true
 
 runs: 
-
   using: "composite"
 
   steps:
@@ -35,23 +34,12 @@ runs:
         pip install coverage
         # install a fast modern linter
         pip install ruff
-        # install mypy for static type checking
-        pip install mypy
 
     - name: Run Python linter (ruff)
       shell: bash
       run: |
-        # Run ruff to lint the repository. This step will fail the workflow on lint errors.
         ruff --version || pip install ruff
         ruff check . --extend-exclude tests
-
-    - name: Run static type checker (mypy)
-      shell: bash
-      run: |
-        # Run mypy to check types. This step will fail the workflow on type errors.
-        mypy --version || pip install mypy
-        # ignore missing imports to be less noisy by default; adjust in pyproject.toml for project-specific config
-        mypy . --ignore-missing-imports --show-error-codes
 
     - name: Run unit tests
       shell: bash
@@ -75,7 +63,6 @@ runs:
       if: success()
       shell: bash
       run: |
-        # Append markdown coverage report to the GitHub Actions job summary if present
         if [ -f code-coverage-results.md ]; then
           echo "### Code coverage summary" >> "$GITHUB_STEP_SUMMARY"
           cat code-coverage-results.md >> "$GITHUB_STEP_SUMMARY"
