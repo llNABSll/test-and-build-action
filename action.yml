@@ -18,7 +18,6 @@ inputs:
     required: true
 
 runs: 
-
   using: "composite"
 
   steps:
@@ -39,7 +38,6 @@ runs:
     - name: Run Python linter (ruff)
       shell: bash
       run: |
-        # Run ruff to lint the repository. This step will fail the workflow on lint errors.
         ruff --version || pip install ruff
         ruff check . --extend-exclude tests
 
@@ -65,7 +63,6 @@ runs:
       if: success()
       shell: bash
       run: |
-        # Append markdown coverage report to the GitHub Actions job summary if present
         if [ -f code-coverage-results.md ]; then
           echo "### Code coverage summary" >> "$GITHUB_STEP_SUMMARY"
           cat code-coverage-results.md >> "$GITHUB_STEP_SUMMARY"
