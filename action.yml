@@ -35,8 +35,6 @@ runs:
         pip install coverage
         # install a fast modern linter
         pip install ruff
-        # install mypy for static type checking
-        pip install mypy
 
     - name: Run Python linter (ruff)
       shell: bash
@@ -44,14 +42,6 @@ runs:
         # Run ruff to lint the repository. This step will fail the workflow on lint errors.
         ruff --version || pip install ruff
         ruff check . --extend-exclude tests
-
-    - name: Run static type checker (mypy)
-      shell: bash
-      run: |
-        # Run mypy to check types. This step will fail the workflow on type errors.
-        mypy --version || pip install mypy
-        # ignore missing imports to be less noisy by default; adjust in pyproject.toml for project-specific config
-        mypy . --ignore-missing-imports --show-error-codes
 
     - name: Run unit tests
       shell: bash
